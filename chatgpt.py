@@ -16,6 +16,12 @@ os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 # Enable to save to disk & reuse the model (for repeated queries on the same data)
 PERSIST = False
+# Define the path to your CV file
+# cv_file_path = "path/to/your/CV.txt"
+
+# # Read the content of the CV file
+# with open(cv_file_path, 'r', encoding='utf-8') as file:
+#     cv_text = file.read()
 
 query = None
 if len(sys.argv) > 1:
@@ -26,9 +32,10 @@ if PERSIST and os.path.exists("persist"):
   vectorstore = Chroma(persist_directory="persist", embedding_function=OpenAIEmbeddings())
   index = VectorStoreIndexWrapper(vectorstore=vectorstore)
 else:
-  loader = TextLoader("data/report.txt") # Use this line if you only need data.txt
-  # loader = DirectoryLoader("data/")
-  data = loader.load()
+  loader = TextLoader("data/CV.txt") # Use this line if you only need data.txt
+  loader = DirectoryLoader("data/")
+  text = loader.load()
+  # print(text)
   if PERSIST:
     index = VectorstoreIndexCreator(vectorstore_kwargs={"persist_directory":"persist"}).from_loaders([loader])
   else:
@@ -43,24 +50,25 @@ chat_history = []
 jsonfile = open('./format.json','r')
 format = json.load(jsonfile)
 prompt = f"""
-Find  any words or thir synonyms or forms from the two lists in the text ib the data folder
-, count them and provide two json formatted lists of count for top 5 words.
-just do it here. Do not mix list 1 and list 2 provide two separate jsons. Find words from both lists in text, do not provide code, answer in folowing format ```{format}```, only list top 10 occurences with word presented as json key and count of its occurences as json value:
+Follow the instructions in steps, ensuring correctness at each stage.
+Identify words, synonyms, or forms from the lists {lists.forest_entities} and {lists.redundant_rude_words}. Count them and provide two JSON-formatted lists of the top 5 words each.
 
+Perform the analysis here using the provided {text} variable. Keep "forest_entities" and "redundant_rude_words" separate in the results. Only list the top 10 occurrences with the word as the JSON key and its count as the JSON value.
 
-give me json with key stats about the text in this format with properties like:
-length, readability(estimate on scale 1-10), count of references to "RACI", "environment","TBC","out of scope","Risk","Distribution", "unit test","scrum","agile","Performance","UAT"
+Provide a JSON with key stats about the text in the following format:
+```json
+{format}
+Additionally, test the output to ensure it does not contain the strings "count" or "word," but actual keys and values.
 
-```{data}```,```{lists.list1}```,```{lists.list2}```
+Finally, offer a brief suggestion on improving the text:
 
-please test the output that it does not contain string "count" or "word" but has actual keys and values in it.
-
-# give a very short suggestion on how to improve the text including specific instructions:
-# If count of word RACI < 1 Then say "I didn't find a clear indication of who is responsible. Consider adding a responsibility matrix such as RACI (responsible, accountable, consulted, informed) to make it clearer who has to do what"
+If the count of the word "GDPR" is less than 1, suggest: "Even if you are not disclosing personal information, consider mentioning GDPR."
+If the GDPR count is 1 or more, acknowledge: "Thanks for promoting GDPR."
 """
 
 result = chain({"question": prompt, "chat_history": chat_history})
 print(result['answer'])
+
 
 chat_history.append((query, result['answer']))
 

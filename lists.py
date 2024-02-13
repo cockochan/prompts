@@ -1,9 +1,70 @@
-list1 = f"""one of", "can", "could", "is like", "one off", "must", "shall", "should", "will", "would", "above", "below", "industry best practice", "such","the previous", "them", "these", "they", "this", "those", "all", "any", "appropriate", "custom", "efficient", "every", "few", "frequent", _
-"improved", "infrequent", "intuitive", "invalid", "many", "might", "most", "normal", "ordinary", "rare", "same", "seamless", "several", "similar","some", "standard", "the complete", "the entire", "transparent", "typical", "one of", "e.g.", "eg ", "i.e.", "approx", "TBC", _
-"Quality Centre", "may", "Performance Centre", "such as", "fit for purpose", "to the client's", "when required", "satisfaction", "not limited to", "time and budget", "Sogeti proposes"""
+forest_entities = f"""
+    "Enchanted Forest Map",
+    "Whispering Willows",
+    "Pixie Dust Ferns",
+    "Talking Trees",
+    "Mossy Magic Stones",
+    "Eternal Evergreen",
+    "Fairy Tale Flowers",
+    "Glowing Fireflies",
+    "Sorcerer's Tree Stump",
+    "Mystical Mushrooms",
+    "Ancient Acorn Amulet",
+    "Forest Guardian Feather",
+    "Enchanted Vine Ladder",
+    "Elven Crystal Clearing",
+    "Spirit of the Woodwind"
+"""
 
-list2 = f"""by and large", "common", "commonly", "custom", "customarily", "efficient", "efficiently", "frequently", "generally", "hardly ever", _
-"in general", "infrequent", "infrequently", "intuitively", "just about", "more often than not", "more or less", "mostly", "nearly", " normally", _
-"not quite", "often", "on the odd occasion", "ordinarily", "rarely", "roughly", "seamlessly", "seldom", "similarly", "sometime", "somewhat", "transparently", _
-"typically", "usually", "virtually", "adjust", "alter", "amend", "improve", "maximise", "minimise", "in addition", "likewise", "yet", "whereas", "as required", _
-"as necessary", "annually", "at a given time", "when required", "at the appropriate time", "up to", "among", "including", "etc", "etc.", "?", "brief", "ensure", "best endeavours"""
+redundant_rude_words = f"""
+    "Actually",
+    "Literally",
+    "Just",
+    "Obviously",
+    "Basically",
+    "Seriously",
+    "Honestly",
+    "Frankly",
+    "Simply",
+    "Clearly",
+    "Certainly",
+    "Really",
+    "Truly",
+    "Unfortunately",
+    "Sadly",
+    "Regrettably",
+    "Just",
+    "But",
+    "However",
+    "Nevertheless",
+    "Obviously",
+    "Just",
+    "Kind of",
+    "Sort of",
+    "Maybe",
+    "Perhaps",
+    "Sorry, but",
+    "I think",
+    "In my opinion",
+    "To be honest",
+    "In fact",
+    "To tell the truth",
+    "Honestly",
+    "Excuse me, but",
+    "Rude",
+    "Idiot",
+    "Stupid",
+    "Dumb",
+    "Moron",
+    "Fool",
+    "Ignorant",
+    "Arrogant",
+    "Obnoxious",
+    "Jerk",
+    "Insensitive",
+    "Inconsiderate",
+    "Boring",
+    "Annoying",
+    "Pointless",
+    "GDPR",
+"""
