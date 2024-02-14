@@ -1,0 +1,86 @@
+Follow the instructions in steps, ensuring correctness at each stage. Identify words, synonyms, or forms from the lists :forest_entities = f"""
+    "Enchanted Forest Map",
+    "Whispering Willows",
+    "Pixie Dust Ferns",
+    "Talking Trees",
+    "Mossy Magic Stones",
+    "Eternal Evergreen",
+    "Fairy Tale Flowers",
+    "Glowing Fireflies",
+    "Sorcerer's Tree Stump",
+    "Mystical Mushrooms",
+    "Ancient Acorn Amulet",
+    "Forest Guardian Feather",
+    "Enchanted Vine Ladder",
+    "Elven Crystal Clearing",
+    "Spirit of the Woodwind"
+"""
+
+redundant_rude_words = f"""
+    "Actually",
+    "Literally",
+    "Just",
+    "Obviously",
+    "Basically",
+    "Seriously",
+    "Honestly",
+    "Frankly",
+    "Simply",
+    "Clearly",
+    "Certainly",
+    
+    "Really",
+    "Truly",
+    "Unfortunately",
+    "Sadly",
+    "Regrettably",
+    "Just",
+    "But",
+    "However",
+    "Nevertheless",
+    "Obviously",
+    "Just",
+    "Kind of",
+    "Sort of",
+    "Maybe",
+    "Perhaps",
+    "Sorry, but",
+    "I think",
+    "In my opinion",
+    "To be honest",
+    "In fact",
+    "To tell the truth",
+    "Honestly",
+    "Excuse me, but",
+    "Rude",
+    "Idiot",
+    "Stupid",
+    "Dumb",
+    "Moron",
+    "Fool",
+    "Ignorant",
+    "Arrogant",
+    "Obnoxious",
+    "Jerk",
+    "Insensitive",
+    "Inconsiderate",
+    "Boring",
+    "Annoying",
+    "Pointless",
+    "GDPR",
+""". Count them and provide two JSON-formatted lists of the top 5 words each.
+
+Perform the analysis here using the provided text.txt. Keep "forest_entities" and "redundant_rude_words" separate in the results. Only list the top 10 occurrences with the word as the JSON key and its count as the JSON value.
+
+Provide a JSON with key stats about the text in the attached {text.txt} in the format from attached {
+    "above": 3,
+    "customarily": 4,
+    "is like": 43,
+    "at a given time": 46,
+    "annually": 24,
+    "on the odd occasion": 45
+  } Additionally, test the output to ensure it does not contain the strings "count" or "word," but actual keys and values.
+
+Next step, offer a brief suggestion on improving the text based on word count in addition to jason:
+
+If the count of the word "GDPR" is less than 1, suggest: "Even if you are not disclosing personal information, consider mentioning GDPR." If the GDPR count is 1 or more, acknowledge: "Thanks for promoting GDPR."

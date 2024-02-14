@@ -42,7 +42,7 @@ else:
     index = VectorstoreIndexCreator().from_loaders([loader])
 
 chain = ConversationalRetrievalChain.from_llm(
-  llm=ChatOpenAI(model="gpt-3.5-turbo"),
+  llm=ChatOpenAI(model="gpt-4-turbo"),
   retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
 )
 
@@ -60,7 +60,7 @@ Provide a JSON with key stats about the text in the following format:
 {format}
 Additionally, test the output to ensure it does not contain the strings "count" or "word," but actual keys and values.
 
-Finally, offer a brief suggestion on improving the text:
+Next step, offer a brief suggestion on improving the text based on word count in addition to jason:
 
 If the count of the word "GDPR" is less than 1, suggest: "Even if you are not disclosing personal information, consider mentioning GDPR."
 If the GDPR count is 1 or more, acknowledge: "Thanks for promoting GDPR."
